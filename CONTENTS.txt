@@ -1,0 +1,7 @@
+Day 03 — Supervised Learning Fundamentals
+
+Files:
+- README.md
+- 01-supervised-learning-pipeline.png
+- 02-train-test-split.png
+- 03-underfitting-good-fit-overfitting.png
