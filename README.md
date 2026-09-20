@@ -1,227 +1,342 @@
-# Day 01 — Introduction to AI, ML and Deep Learning
+# Day 02 — Types of Machine Learning
 
-Welcome to Day 1 of my Machine Learning journey.
+In Day 2, I learned the **three major learning paradigms in Machine Learning**:
 
-In this first lecture, I learned the basic relationship between **Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning (DL)**, along with an introduction to **Data Science (DS)**.
+1. Supervised Learning
+2. Unsupervised Learning
+3. Reinforcement Learning
 
-My goal is to document my learning step by step so that I can look back at my progress and other learners can follow the journey.
-
----
-
-## 🎯 My Learning Goal
-
-I am documenting my journey through:
-
-- Machine Learning
-- Artificial Intelligence
-- Neural Networks
-- Deep Learning
-- Practical projects
-
-I want to build strong fundamentals and gradually move from theory to implementation and projects.
+I also learned about **Regression, Classification, Clustering, and Dimensionality Reduction**.
 
 ---
 
-## 1. What is Artificial Intelligence?
+## 1. Supervised Learning
 
-**Artificial Intelligence (AI)** is the broader field of creating computer systems that can perform tasks that normally require human intelligence.
+### What is it?
 
-Examples include:
+In supervised learning, a model learns from **labeled data**.
 
-- Understanding language
-- Recognizing images
-- Making decisions
-- Solving problems
-- Planning
-- Recognizing patterns
+The training data contains:
+
+- Input features `X`
+- A known target/label `y`
+
+The model learns a relationship between the input and the known target so that it can make predictions for new data.
 
 ### Simple idea
 
-> **AI → The goal is to make computers perform tasks that normally require human intelligence.**
+```text
+Labeled Data
+(X + known answer)
+       ↓
+   ML Model
+       ↓
+Learned patterns
+       ↓
+New Data
+       ↓
+Prediction
+```
+
+![Supervised Learning](./supervised-learning.png)
+
+### Example — Cat vs Dog
+
+Suppose we have:
+
+```text
+1000 Cat Images → label = Cat
+1000 Dog Images → label = Dog
+```
+
+The model uses these labeled examples to learn useful patterns.
+
+Later, when we provide a new image:
+
+```text
+New Image
+   ↓
+Trained Model
+   ↓
+Cat / Dog
+```
+
+### Main types of Supervised Learning
+
+#### A. Regression
+
+Regression is used when the target is a **continuous numerical value**.
+
+Examples:
+
+- Predicting house price
+- Predicting temperature
+- Predicting salary
+- Predicting sales
+
+Example:
+
+```text
+Input: house features
+Output: ₹75,00,000
+```
+
+The output is a number that can vary continuously.
+
+#### B. Classification
+
+Classification is used when the target belongs to a **class/category**.
+
+Examples:
+
+- Cat or Dog
+- Spam or Not Spam
+- Disease or No Disease
+- Fraud or Not Fraud
+
+The output is a category rather than a continuous number.
+
+### Common Classification Algorithms
+
+Some algorithms used for classification include:
+
+- Logistic Regression
+- K-Nearest Neighbors (KNN)
+- Decision Trees
+- Random Forest
+- Support Vector Machines (SVM)
+- Naive Bayes
+- Neural Networks
+
+> Note: Some of these algorithms can also be adapted for other tasks. For example, decision trees, random forests, SVMs, and neural networks have both classification and regression variants.
 
 ---
 
-## 2. What is Machine Learning?
+## 2. Unsupervised Learning
 
-**Machine Learning (ML)** is a subfield of AI.
+In unsupervised learning, the training data does **not** contain known target labels.
 
-Instead of explicitly programming every rule, we provide data and allow an algorithm to learn patterns from that data.
+The algorithm tries to discover useful patterns or structure in the data by itself.
 
-### Traditional programming
+### Simple idea
 
 ```text
-Rules + Data → Output
+Unlabeled Data
+      ↓
+Unsupervised Algorithm
+      ↓
+Discovered Patterns / Structure
 ```
 
-### Machine Learning
+![Unsupervised Clustering](./unsupervised-clustering.png)
+
+### Example — Customer Segmentation
+
+Suppose we have information about 1000 customers:
+
+- Age
+- Income
+- Spending behavior
+- Purchase frequency
+
+But we do not tell the model which customers belong to which group.
+
+An algorithm may discover groups such as:
 
 ```text
-Data + Expected Results
-          ↓
-      ML Algorithm
-          ↓
-     Learned Pattern
-          ↓
-       Prediction
+Group 1 → High-value customers
+Group 2 → Regular customers
+Group 3 → Budget customers
+```
+
+These groups are discovered from the patterns in the data.
+
+### A. Clustering
+
+Clustering means **grouping similar data points together**.
+
+For example:
+
+```text
+○ ○ ○ ○       △ △ △ △       □ □ □
+○ ○ ○         △ △ △         □ □ □
+```
+
+The algorithm tries to identify groups of similar points.
+
+A common clustering algorithm is **K-Means Clustering**.
+
+### B. Dimensionality Reduction
+
+Dimensionality reduction means reducing the number of features while trying to retain the useful information in the data.
+
+For example:
+
+```text
+100 features
+     ↓
+Dimensionality Reduction
+     ↓
+10 useful dimensions
+```
+
+![Dimensionality Reduction](./dimensionality-reduction.png)
+
+Why can this be useful?
+
+- Makes data easier to visualize
+- Can reduce redundancy
+- Can reduce noise in some situations
+- Can make models more efficient
+- Can help with high-dimensional datasets
+
+A well-known technique is **Principal Component Analysis (PCA)**.
+
+> Important: dimensionality reduction is generally treated as an unsupervised learning task, although some dimensionality-reduction methods use labels or other supervision.
+
+---
+
+## 3. Reinforcement Learning
+
+Reinforcement Learning (RL) is a learning paradigm in which an **agent interacts with an environment**.
+
+The agent takes actions and receives feedback in the form of rewards or penalties.
+
+Over time, it learns a strategy for choosing actions that can lead to better long-term rewards.
+
+![Reinforcement Learning Loop](./reinforcement-learning-loop.png)
+
+### Basic RL loop
+
+```text
+Agent
+  ↓
+Action
+  ↓
+Environment
+  ↓
+Reward + New State
+  ↓
+Agent
 ```
 
 ### Example
 
-Suppose we want a computer to predict house prices.
-
-Instead of writing rules such as:
+Imagine an agent learning to play a game.
 
 ```text
-If area is large → expensive
-If location is good → expensive
+Agent takes action
+        ↓
+Game responds
+        ↓
+Reward / penalty
+        ↓
+Agent learns
+        ↓
+Chooses better actions
 ```
 
-we can provide many examples of houses with their features and prices.
-
-The ML algorithm learns relationships from the data and uses them to make predictions for new houses.
+The agent is not simply given the correct answer for every situation. It learns through interaction and feedback.
 
 ---
 
-## 3. What is Deep Learning?
+# 4. Comparing the Three Learning Paradigms
 
-**Deep Learning (DL)** is a specialized subfield of Machine Learning that uses **artificial neural networks with multiple layers**.
+| Type | Training information | Main goal | Example |
+|---|---|---|---|
+| Supervised | Labeled data | Predict target | Cat/Dog classification |
+| Unsupervised | Unlabeled data | Discover structure | Customer clustering |
+| Reinforcement | Rewards/feedback | Learn actions/strategy | Game-playing agent |
 
-A simplified neural network looks like:
-
-```text
-Input Layer
-     ↓
-Hidden Layer
-     ↓
-Hidden Layer
-     ↓
-Output Layer
-```
-
-Deep learning becomes especially useful for complex data such as:
-
-- Images
-- Audio
-- Text
-- Video
-
-### Example: Cat Image Classification
-
-A neural network can receive an image and gradually learn useful features.
+### Easy way to remember
 
 ```text
-Image
-  ↓
-Neural Network
-  ↓
-Hidden Layers
-  ↓
-Learned Features
-  ↓
-Output
-  ↓
-"Cat"
+Supervised
+→ "I have the answers."
+
+Unsupervised
+→ "Find the patterns yourself."
+
+Reinforcement
+→ "Try actions and learn from rewards."
 ```
 
 ---
 
-## 4. Relationship Between AI, ML and DL
+# 5. What I Learned Today
 
-The simplest way to remember the relationship is:
+### Supervised Learning
 
-```text
-Artificial Intelligence
-        │
-        └── Machine Learning
-                │
-                └── Deep Learning
-```
+- Uses labeled data.
+- Main tasks include regression and classification.
+- The model learns from known target values.
 
-So:
+### Unsupervised Learning
 
-- **AI** is the broader field.
-- **ML** is a subset of AI.
-- **DL** is a subset of ML.
+- Works without target labels.
+- Finds patterns or structure in data.
+- Includes tasks such as clustering and dimensionality reduction.
 
-> Deep Learning ⊂ Machine Learning ⊂ Artificial Intelligence
+### Reinforcement Learning
 
----
-
-## 5. What is Data Science?
-
-**Data Science** is a broader interdisciplinary field focused on extracting useful information and insights from data.
-
-It can involve:
-
-- Statistics
-- Mathematics
-- Programming
-- Data cleaning
-- Data visualization
-- Machine Learning
-- Domain knowledge
-
-Data Science and Machine Learning overlap, but they are **not the same thing**.
-
-A Data Scientist may use Machine Learning, but Data Science also includes many tasks that happen before and after model training.
+- Uses an agent and an environment.
+- The agent takes actions.
+- Rewards and penalties provide feedback.
+- The agent learns a strategy over time.
 
 ---
 
-## 🧠 AI vs ML vs DL vs DS
+# 6. Important Terms
 
-| Field | Main Idea |
+| Term | Meaning |
 |---|---|
-| AI | Building systems that perform tasks associated with intelligence |
-| ML | Learning patterns from data |
-| DL | Using multi-layer neural networks to learn complex patterns |
-| DS | Extracting useful insights from data using multiple techniques |
+| Feature | An input variable used by a model |
+| Label / Target | The value the model is trying to predict |
+| Labeled Data | Data containing inputs and known targets |
+| Unlabeled Data | Data without known target labels |
+| Regression | Predicting a continuous numerical value |
+| Classification | Predicting a category/class |
+| Clustering | Grouping similar data points |
+| Agent | The learner in reinforcement learning |
+| Environment | The world/system the agent interacts with |
+| Reward | Feedback that encourages useful behavior |
 
 ---
 
-## 📌 Key Takeaways
-
-1. AI is the broad field of intelligent computer systems.
-2. Machine Learning is a subset of AI.
-3. Deep Learning is a subset of Machine Learning.
-4. Deep Learning commonly uses multi-layer neural networks.
-5. Data Science is related to ML but is not simply a subset of AI.
-6. Machine Learning allows systems to learn patterns from data rather than relying only on explicitly written rules.
-
----
-
-## ❓ Questions I Have
+# 7. Questions I Want to Answer Next
 
 As I continue learning, I want to understand:
 
-- How exactly does a machine learning algorithm learn?
-- How are mathematical equations used in ML?
-- How does a neural network learn its weights?
-- How do we evaluate whether a model is good?
-- When should we use traditional ML versus Deep Learning?
-
-These are questions I expect to answer as my journey continues.
-
----
-
-## 📚 My Notes
-
-I also keep handwritten notes while learning.
-
-The cleaned conceptual diagram from this lecture is available here:
-
-![AI ML DL Data Science](./ai-ml-dl-data-science.png)
+- How does a supervised learning model actually learn from labeled data?
+- What is the difference between regression and classification mathematically?
+- How does K-Means decide which points belong to a cluster?
+- How does PCA reduce dimensions?
+- How does an RL agent decide which action to take?
+- What exactly happens during model training?
 
 ---
 
-## 🚀 Next
+# 📚 Day 2 Summary
 
-I will continue documenting each lecture in this repository and gradually add:
+```text
+Machine Learning
+│
+├── Supervised Learning
+│   ├── Regression
+│   └── Classification
+│
+├── Unsupervised Learning
+│   ├── Clustering
+│   └── Dimensionality Reduction
+│
+└── Reinforcement Learning
+    └── Learning through rewards and feedback
+```
 
-- Python implementations
-- Machine Learning algorithms
-- Mathematics and statistics
-- Experiments
-- Mini projects
-- Larger projects
+**Day 02 completed ✅**
 
-**Day 01 completed ✅**
+---
+
+## Next
+
+In the next lessons, I will start going deeper into individual Machine Learning concepts and algorithms, and I will implement what I learn using Python.
